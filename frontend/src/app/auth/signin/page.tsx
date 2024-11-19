@@ -42,7 +42,87 @@ const Signin = () => {
             setErrors(validationErrors);
             return;
         }
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+            credentials: 'include'
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then(async (response) => {
+                console.log('login res ', response)
+                if (response.ok) {
+                    toast(response.message, {
+                        type: 'success',
+                        position: 'top-right',
+                        autoClose: 2000
+                    })
+                    checkLogin()
+                } else {
+                    toast(response.message, {
+                        type: 'error',
+                        position: 'top-right',
+                        autoClose: 2000
+                    });
+                }
+            })
+            .catch((error) => {
+                toast(error.message, {
+                    type: 'error',
+                    position: 'top-right',
+                    autoClose: 2000
+                });
+            })
     }
+
+    const checkLogin = async () => {
+        // let authToken = await getCookie('authToken')
+        // let refreshToken = await getCookie('refreshToken')
+
+        // console.log(authToken, refreshToken)
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/checklogin`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then((response) => {
+                console.log('check login res ', response)
+
+
+
+                if (response.ok) {
+                    // toast(response.message, {
+                    //     type: 'success',
+                    //     position: 'top-right',
+                    //     autoClose: 2000
+                    // })
+
+                    window.location.href = "/"
+
+
+                } else {
+                    // toast(response.message, {
+                    //     type: 'error',
+                    //     position: 'top-right',
+                    //     autoClose: 2000
+                    // });
+                }
+            })
+            .catch((error) => {
+                window.location.href = "/"
+            })
+    };
+
 
     return (
         <div>

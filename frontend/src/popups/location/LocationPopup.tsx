@@ -46,7 +46,33 @@ const LocationPopup = ({ setShowLocationPopup }: { setShowLocationPopup: React.D
   }, [])
 
   const handleSave = () => {
-    setShowLocationPopup(false)
+    // setShowLocationPopup(false)
+    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/changeCity`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        city: selectedCity
+      })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.ok) {
+          // toast(data.message, {
+          //     type: 'success'
+          // })
+          setShowLocationPopup(false)
+          window.location.reload()
+        }
+      })
+      .catch((err) => {
+        toast(err.message, {
+          type: 'error'
+        })
+        console.log(err)
+      })
   }
 
   return (
@@ -54,19 +80,21 @@ const LocationPopup = ({ setShowLocationPopup }: { setShowLocationPopup: React.D
       <div className='popup-cont'>
         <select
           className='select'
-          defaultValue={selectedCity}
           onChange={(e) => {
             setSelectedCity(e.target.value)
           }}
         >
-          <option value="" disabled >Select your city</option>
+          <option value="" disabled selected>Select your city</option>
           {
             cities.map((city: any) => {
               return <option key={city.value} value={city.value}>{city.label}</option>
             })
           }
         </select>
-        <button  onClick={handleSave} className='btn'>Save</button>
+
+        <button className='btn'
+          onClick={handleSave}
+        >Save</button>
       </div>
     </div>
   )

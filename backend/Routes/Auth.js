@@ -84,5 +84,40 @@ router.get('/checklogin', authTokenHandler, async (req, res) => {
     })
 })
 
+router.get('/logout', async (req, res) => {
+    res.clearCookie('authToken');
+    res.clearCookie('refreshToken');
+    res.json({
+        ok: true,
+        message: 'User logged out successfully'
+    })
+})
+
+router.get('/getuser', authTokenHandler, async (req, res) => {
+    const user = await User.findOne({ _id: req.userId });
+
+    if (!user) {
+        return res.status(400).json(createResponse(false, 'Invalid credentials'));
+    }
+    else{
+        return res.status(200).json(createResponse(true, 'User found', user));
+    }
+})
+
+// change user city
+router.post('/changeCity', authTokenHandler, async (req, res, next) => {
+    const { city } = req.body;
+    const user = await User.findOne({ _id: req.userId });
+
+    if (!user) {
+        return res.status(400).json(createResponse(false, 'Invalid credentials'));
+    }
+    else{
+        user.city = city;
+        await user.save();
+        return res.status(200).json(createResponse(true, 'City changed successfully'));
+    }
+})
+
 router.use(errorHandler)
 module.exports = router;
