@@ -5,7 +5,7 @@ import './BuyTicketsPage.css'
 import Link from 'next/link';
 import { usePathname, useParams } from 'next/navigation'
 
-const BuyTicketsPage  = () => {
+const BuyTicketsPage = () => {
     const pathname = usePathname()
     const params = useParams()
     const [selectedDate, setSelectedDate] = React.useState<any>(new Date())
@@ -69,7 +69,7 @@ const BuyTicketsPage  = () => {
     React.useEffect(() => {
         getTheatres(selectedDate)
     }, [selectedDate])
-    
+
 
 
     // const movie = {

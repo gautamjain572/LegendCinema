@@ -98,38 +98,27 @@ const Navbar = () => {
   return (
     <nav>
       <div className='left'>
-        <Link href="/"><Image src={assets.logo} alt="logo" width={100} height={100}
-          onClick={() => window.location.href = "/"}
-        /></Link>
+        <Link href="/"><Image src={assets.logo} alt="logo" width={100} height={100} onClick={() => window.location.href = "/"} /></Link>
         <div className='searchbox'>
           <BiSearch className='searchbtn' />
           <input type="text" placeholder="Search For a Movie" />
         </div>
       </div>
       <div className='right'>
-        <p className='dropdown'
-          onClick={() => setShowLocationPopup(true)}
-        >
+        <p className='dropdown' onClick={() => setShowLocationPopup(true)}>
           {user ? user.city : "Select City"}
-          <RiArrowDropDownFill className="dropicon" /></p>
+          <RiArrowDropDownFill className="dropicon" />
+        </p>
         {
-          loggedIn ?
-            <button className='theme_btn1 linkstylenone' onClick={handleLogout}>Logout</button>
-            :
-            <Link href="/auth/signin" className='theme_btn1 linkstylenone'>
-              Login
-            </Link>
-
+          loggedIn
+            ? <button className='theme_btn1 linkstylenone' onClick={handleLogout}>Logout</button>
+            : <Link href="/auth/signin" className='theme_btn1 linkstylenone'>Login</Link>
         }
-        <Link href="/profile" className='linkstylenone'>
-          <BiUserCircle className='theme_icon1' />
-        </Link>
+        <Link href="/profile" className='linkstylenone'><BiUserCircle className='theme_icon1' /></Link>
       </div>
       {
         showLocationPopup &&
-        <LocationPopup
-          setShowLocationPopup={setShowLocationPopup}
-        />
+        <LocationPopup setShowLocationPopup={setShowLocationPopup} />
       }
     </nav>
   )

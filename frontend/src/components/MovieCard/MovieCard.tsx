@@ -4,11 +4,12 @@ import { useRouter } from 'next/navigation';
 import { BsFillStarFill } from 'react-icons/bs';
 import './MovieCard.css'
 
-const MovieCard = (data: any) => {
+const MovieCard = ({Movie , userdata}:any) => {
   const router = useRouter();
-  const { _id, title, genre, rating, portraitImgUrl } = data.Movie;
-  //const { city } = data.user.city;
+  const { _id, title, genre, rating, portraitImgUrl } = Movie;
+  //const { city } = data.user;
    const city = 'jabalpur'
+   console.log(userdata);
 
   return (
     <div

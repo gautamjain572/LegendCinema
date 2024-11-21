@@ -1,6 +1,6 @@
 import React from 'react'
 import MovieCard from './MovieCard';
-import { MovieCardType } from '@/types/types';
+import { MovieCardType, UserType } from '@/types/types';
 
 
 const MovieCaraousel = () => {
@@ -56,9 +56,9 @@ const MovieCaraousel = () => {
               return res.json();
           })
           .then((response) => {
-              console.log(response)
               if(response.ok){
                   setUser(response.data)
+                  //console.log(response)
               }
               else{
                   window.location.href = "/auth/signin"
@@ -84,7 +84,7 @@ const MovieCaraousel = () => {
           .then((res) => res.json())
           .then((data) => {
               if(data.ok){
-                  console.log(data)
+                  //console.log(data)
                   setMovies(data.data)
               }
           })
@@ -97,7 +97,7 @@ const MovieCaraousel = () => {
       getMovies()
       getuser()
   }, [])
-
+  
   return (
     <div className='sliderout m-10 flex gap-10'>
         {
@@ -106,7 +106,7 @@ const MovieCaraousel = () => {
                             <div key={Movie._id}>
                                 <MovieCard 
                                     Movie={Movie}
-                                    user={user}
+                                    userdata={user}
                                 />
                             </div>
                         )
