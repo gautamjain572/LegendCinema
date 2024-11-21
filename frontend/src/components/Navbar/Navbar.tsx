@@ -26,7 +26,7 @@ const Navbar = () => {
         return res.json();
       })
       .then((response) => {
-        console.log(response)
+        //console.log(response)
         setUser(response.data)
       })
       .catch((error) => {
@@ -47,7 +47,7 @@ const Navbar = () => {
         return res.json();
       })
       .then((response) => {
-        console.log(response)
+        //console.log(response)
         if (response.ok) {
           window.location.href = "/auth/signin"
         }
@@ -76,7 +76,7 @@ const Navbar = () => {
         return res.json();
       })
       .then((response) => {
-        console.log(response)
+        //console.log(response)
         if (response.ok) {
           setLoggedIn(true)
         }
@@ -98,9 +98,9 @@ const Navbar = () => {
   return (
     <nav>
       <div className='left'>
-        <Image src={assets.logo} alt="logo" width={100} height={100}
+        <Link href="/"><Image src={assets.logo} alt="logo" width={100} height={100}
           onClick={() => window.location.href = "/"}
-        />
+        /></Link>
         <div className='searchbox'>
           <BiSearch className='searchbtn' />
           <input type="text" placeholder="Search For a Movie" />

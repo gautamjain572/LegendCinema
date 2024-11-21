@@ -31,6 +31,19 @@
     width: fit-content;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* SEATS */
 /* Style for seat type */
 .selectseat {
@@ -100,6 +113,7 @@
 
 /* Style for seat row */
 .seat-row {
+
     /* background-color: aqua; */
     margin: 2px;
     display: flex;
@@ -137,16 +151,8 @@
     display: flex;
     padding: 0px;
 }
-.seat-cols {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    gap: 50px;
-}
-.seat-col {
-    display: flex;
-}
 
+/* Style for individual seat */
 .seat-available,
 .seat-unavailable,
 .seat-selected {
@@ -160,20 +166,99 @@
     border-radius: 5px;
     box-shadow: 0px 0px 5px 0px #ccc;
 }
+
+
+
+/* Style for unavailable seats */
 .seat-unavailable {
     color: #313131;
     background-color: rgb(230, 230, 230);
-    box-shadow: 0px 0px 0px 0px #ffffff;
 }
+
 .seat-selected {
     color: white;
     background-color: var(--col1);
 }
+
+.seat-cols {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 50px;
+}
+
+.seat-col {
+    display: flex;
+}
+
 .seat-available:hover {
     cursor: pointer;
     background-color: var(--col1);
     color: white;
 }
+
 .seat-unavailable:hover {
     cursor: not-allowed;
+}
+
+
+
+/* TOTAL */
+
+.selectseat .totalcont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px #ccc;
+    width: 300px;
+}
+
+.selectseat .totalcont .total {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+}
+
+.selectseat .totalcont .total h2 {
+    font-size: 15px;
+    font-weight: 600;
+    color: gray;
+}
+
+.selectseat .totalcont .total h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--col1);
+}
+
+
+
+/* time */
+
+.selectseat .timecont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+.selectseat .timecont .time {
+    border: 2px solid #ccc;
+    padding: 5px 20px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.selectseat .timecont .selected{
+    border: 2px solid var(--col1);
+    color: var(--col1);
 }

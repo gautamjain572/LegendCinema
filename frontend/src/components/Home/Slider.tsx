@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { assets } from '@/assets/assets';
 import { useEffect } from "react";
 
+
 const width = window.innerWidth;
 const height = window.innerHeight;
 

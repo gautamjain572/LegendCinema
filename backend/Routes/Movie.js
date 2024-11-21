@@ -246,7 +246,7 @@ router.post('/bookticket', authTokenHandler, async (req, res, next) => {
             });
         }
 
-        const user = await User.findById(req.userId).populate('userId');
+        const user = await User.findById(req.userId);
         if (!user) {
             return res.status(404).json({
                 ok: false,
