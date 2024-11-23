@@ -2,26 +2,21 @@
 import React from 'react'
 import './ProfilePage.css'
 
-const ProfilePage  = () => {
+const ProfilePage = () => {
     const [bookings, setBookings] = React.useState<any>(null)
     const [user, setUser] = React.useState<any>(null)
 
     const getBookings = async () => {
         fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/movie/getuserbookings`, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include'
-
         })
             .then((res) => res.json())
             .then((data) => {
                 if (data.ok) {
-                    console.log(data)
+                    //console.log(data)
                     setBookings(data.data)
-
-
                     // {
                     //     "_id": "651d70e7c54f60ba058333d2",
                     //     "showTime": "20:27",
@@ -68,15 +63,12 @@ const ProfilePage  = () => {
                 else {
                     console.log(data)
                 }
-            }
-            )
+            })
     }
 
     const getUserData = async () => {
-
         // router.get('/getuser', authTokenHandler, async (req, res) => {
         //     const user = await User.findOne({ _id: req.userId });
-
         //     if (!user) {
         //         return res.status(400).json(createResponse(false, 'Invalid credentials'));
         //     }
@@ -84,21 +76,16 @@ const ProfilePage  = () => {
         //         return res.status(200).json(createResponse(true, 'User found', user));
         //     }
         // })
-
-
         fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/getuser`, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include'
         })
             .then((res) => res.json())
             .then((data) => {
                 if (data.ok) {
-                    console.log(data)
+                    //console.log(data)
                     setUser(data.data)
-
                     // {
                     //     "_id": "651c19f156b991c66296fb73",
                     //     "name": "Harshal Jain",
@@ -118,15 +105,14 @@ const ProfilePage  = () => {
                     console.log(data)
                 }
             })
-            .catch((err) => {
-                console.log(err)
-            })
+            .catch((err) => console.log(err))
     }
 
     React.useEffect(() => {
         getBookings()
         getUserData()
     }, [])
+
     return (
         <div className='profile'>
             <h1 className='head'>Profile</h1>
@@ -141,19 +127,16 @@ const ProfilePage  = () => {
                         <h3>Email</h3>
                         <p>{user?.email}</p>
                     </div>
-
                     <div className='detail'>
                         <h3>City</h3>
                         <p>{user?.city}</p>
                     </div>
                 </div>
-
-
             </div>
             <div className='bookings'>
                 <h2>Bookings</h2>
                 <div className='details'>
-                    {
+                    {bookings && 
                         bookings?.map((booking: any) => {
                             return (
                                 <div className='booking' key={booking._id}>
@@ -161,59 +144,46 @@ const ProfilePage  = () => {
                                         <h3>Movie</h3>
                                         <p>{booking.movieId.title}</p>
                                     </div>
-
                                     <div className='detail'>
                                         <h3>Screen</h3>
                                         <p>{booking.screenId.name}</p>
                                     </div>
-
                                     <div className='detail'>
                                         <h3>Seats</h3>
-                                        <p>{booking.seats.map((seat: any, index:any) => {
-                                            return (
-                                                <span 
-                                                key={index}
-                                                >{seat.seat_id}, </span>
-                                            )
-                                        }
-                                        )}</p>
+                                        <p>
+                                            {
+                                                booking.seats.map((seat: any, index: any) => {
+                                                    return <span key={index}>{seat.seat_id},</span>
+                                                })
+                                            }
+                                        </p>
                                     </div>
-
                                     <div className='detail'>
-
                                         <h3>Price</h3>
                                         <p>{booking.totalPrice}</p>
                                     </div>
-
                                     <div className='detail'>
                                         <h3>Payment Type</h3>
                                         <p>{booking.paymentType}</p>
                                     </div>
-
                                     <div className='detail'>
                                         <h3>Payment Id</h3>
                                         <p>{booking.paymentId}</p>
                                     </div>
-
                                     <div className='detail'>
                                         <h3>Show Date</h3>
                                         <p>{booking.showDate}</p>
                                     </div>
-
                                     <div className='detail'>
                                         <h3>Show Time</h3>
                                         <p>{booking.showTime}</p>
                                     </div>
-
-
-
                                 </div>
                             )
                         })
                     }
                 </div>
             </div>
-
         </div>
     )
 }

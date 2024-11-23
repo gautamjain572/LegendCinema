@@ -12,19 +12,8 @@ export interface MovieCardType {
 }
 
 export interface CelebrityCardType {
-    name: string;
-    imageUrl: string;
-    _id: string;
-    role: string;
-}
-
-export interface UserType {
-    bookings: string[];
-    city: string;
-    createdAt: string;
-    email: string;
-    name: string;
-    password: string;
-    updatedAt: string
-    _id: string
+    celebName: string;
+    celebImage: string;
+    celebType: string;
+    celebRole: string;
 }

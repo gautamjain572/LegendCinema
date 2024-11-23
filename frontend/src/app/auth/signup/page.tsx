@@ -1,8 +1,6 @@
 "use client"
 import React, { useState } from 'react';
 import Image from 'next/image';
-import styles from './page.module.css';
-import Navbar from '@/components/Navbar/Navbar';
 import '../auth.css';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
@@ -24,7 +22,6 @@ const Signup = () => {
         password: '',
         confirmPassword: '',
         city: '',
-
     });
     const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -58,14 +55,10 @@ const Signup = () => {
         }
         fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/register`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
         })
-            .then((res) => {
-                return res.json();
-            })
+            .then((res) => res.json())
             .then((response) => {
                 if (response.ok) {
                     toast(response.message, {
@@ -98,8 +91,7 @@ const Signup = () => {
                     autoClose: 2000
                 });
             })
-        
-    }
+    };
 
     return (
         <div className='authout'>
@@ -108,13 +100,7 @@ const Signup = () => {
                     <Image src={logo} alt="" className='img' />
                 </div>
                 <div className='right'>
-                    <form
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                        }}
-                        onSubmit={handleSubmit}
-                    >
+                    <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={handleSubmit}>
                         <div className="forminput_cont">
                             <label>Name</label>
                             <input
@@ -146,9 +132,7 @@ const Signup = () => {
                                 value={formData.password}
                                 onChange={handleChange}
                             />
-                            {errors.password && (
-                                <span className="formerror">{errors.password}</span>
-                            )}
+                            {errors.password && <span className="formerror">{errors.password}</span>}
                         </div>
                         <div className="forminput_cont">
                             <label>Confirm Password</label>
@@ -159,11 +143,8 @@ const Signup = () => {
                                 value={formData.confirmPassword}
                                 onChange={handleChange}
                             />
-                            {errors.confirmPassword && (
-                                <span className="formerror">{errors.confirmPassword}</span>
-                            )}
+                            {errors.confirmPassword && <span className="formerror">{errors.confirmPassword}</span>}
                         </div>
-
                         <div className="forminput_cont">
                             <label>City</label>
                             <input
@@ -173,16 +154,12 @@ const Signup = () => {
                                 value={formData.city}
                                 onChange={handleChange}
                             />
-                            {errors.city && (
-                                <span className="formerror">{errors.city}</span>
-                            )}
+                            {errors.city && <span className="formerror">{errors.city}</span>}
                         </div>
-
                         <button type="submit" className="main_button">Register</button>
                         <p className='authlink'>Already have an account? <Link href="/auth/signin">login</Link></p>
                     </form>
                 </div>
-
             </div>
         </div >
     )

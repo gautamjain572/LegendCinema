@@ -1,8 +1,6 @@
 "use client"
 import React, { useState } from 'react';
 import Image from 'next/image';
-import styles from './page.module.css';
-import Navbar from '@/components/Navbar/Navbar';
 import '../auth.css';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
@@ -20,6 +18,7 @@ const Signin = () => {
         password: '',
     });
     const [errors, setErrors] = useState<Record<string, string>>({});
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({
@@ -37,24 +36,19 @@ const Signin = () => {
         if (!formData.password) {
             validationErrors.password = 'Password is required';
         }
-
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
             return;
         }
         fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/login`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
             credentials: 'include'
         })
-            .then((res) => {
-                return res.json();
-            })
+            .then((res) => res.json())
             .then(async (response) => {
-                console.log('login res ', response)
+                //console.log('login res ', response)
                 if (response.ok) {
                     toast(response.message, {
                         type: 'success',
@@ -77,39 +71,27 @@ const Signin = () => {
                     autoClose: 2000
                 });
             })
-    }
+    };
 
     const checkLogin = async () => {
         // let authToken = await getCookie('authToken')
         // let refreshToken = await getCookie('refreshToken')
-
         // console.log(authToken, refreshToken)
         fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/checklogin`, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-
         })
-            .then((res) => {
-                return res.json();
-            })
+            .then((res) => res.json())
             .then((response) => {
-                console.log('check login res ', response)
-
-
-
+                //console.log('check login res ', response)
                 if (response.ok) {
                     // toast(response.message, {
                     //     type: 'success',
                     //     position: 'top-right',
                     //     autoClose: 2000
                     // })
-
                     window.location.href = "/"
-
-
                 } else {
                     // toast(response.message, {
                     //     type: 'error',
@@ -123,7 +105,6 @@ const Signin = () => {
             })
     };
 
-
     return (
         <div>
             <div className='authout'>
@@ -132,13 +113,7 @@ const Signin = () => {
                         <Image src={logo} alt="" className='img' />
                     </div>
                     <div className='right'>
-                        <form
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                            }}
-                            onSubmit={handleSubmit}
-                        >
+                        <form style={{ display: 'flex', flexDirection: 'column' }} onSubmit={handleSubmit}>
                             <div className="forminput_cont">
                                 <label>Email</label>
                                 <input
@@ -159,15 +134,9 @@ const Signin = () => {
                                     value={formData.password}
                                     onChange={handleChange}
                                 />
-                                {errors.password && (
-                                    <span className="formerror">{errors.password}</span>
-                                )}
+                                {errors.password && <span className="formerror">{errors.password}</span>}
                             </div>
-
-                            <button type="submit" className="main_button">
-                                Login
-                            </button>
-
+                            <button type="submit" className="main_button">Login</button>
                             <p className="authlink">
                                 Don&apos;t have an account? <Link href="/auth/signup">Register</Link>
                             </p>

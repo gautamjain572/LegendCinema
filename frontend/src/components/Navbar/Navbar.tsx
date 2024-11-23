@@ -6,7 +6,7 @@ import { RiArrowDropDownFill } from 'react-icons/ri'
 import { assets } from '@/assets/assets.js'
 import Image from 'next/image'
 import './Navbar.css'
-import LocationPopup from '@/popups/location/LocationPopup'
+import LocationPopup from '@/popups/LocationPopup'
 
 const Navbar = () => {
 
@@ -17,64 +17,47 @@ const Navbar = () => {
   const getuser = async () => {
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/getuser`, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       credentials: 'include'
     })
-      .then((res) => {
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((response) => {
         //console.log(response)
         setUser(response.data)
       })
-      .catch((error) => {
-        console.log(error)
-      })
-
+      .catch((error) => { console.log(error) })
   }
 
   const handleLogout = async () => {
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/logout`, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: {'Content-Type': 'application/json'},
       credentials: 'include'
     })
-      .then((res) => {
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((response) => {
         //console.log(response)
         if (response.ok) {
           window.location.href = "/auth/signin"
         }
-
       })
       .catch((error) => {
         console.log(error)
         window.location.href = "/auth/signin"
-
       })
   }
 
   const checkLogin = async () => {
     // let authToken = await getCookie('authToken')
     // let refreshToken = await getCookie('refreshToken')
-
     // console.log(authToken, refreshToken)
+
     fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/checklogin`, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: {'Content-Type': 'application/json'},
       credentials: 'include'
     })
-      .then((res) => {
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((response) => {
         //console.log(response)
         if (response.ok) {
@@ -98,7 +81,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className='left'>
-        <Link href="/"><Image src={assets.logo} alt="logo" width={100} height={100} onClick={() => window.location.href = "/"} /></Link>
+        <Link href="/"><Image src={assets.logo} alt="logo" width={100} height={100} /></Link>
         <div className='searchbox'>
           <BiSearch className='searchbtn' />
           <input type="text" placeholder="Search For a Movie" />
@@ -116,10 +99,7 @@ const Navbar = () => {
         }
         <Link href="/profile" className='linkstylenone'><BiUserCircle className='theme_icon1' /></Link>
       </div>
-      {
-        showLocationPopup &&
-        <LocationPopup setShowLocationPopup={setShowLocationPopup} />
-      }
+      {showLocationPopup && <LocationPopup setShowLocationPopup={setShowLocationPopup} />}
     </nav>
   )
 }
