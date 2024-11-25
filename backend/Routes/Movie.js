@@ -365,7 +365,7 @@ router.get('/schedulebymovie/:screenid/:date/:movieid', async (req, res, next) =
 
 router.get('/getuserbookings' , authTokenHandler , async (req , res , next) => {
     try {
-        const user = await User.findById(req.userId).populate('bookings');
+        const user = await User.findById(req.userId);
         if(!user){
             return res.status(404).json(createResponse(false, 'User not found', null));
         }
@@ -377,7 +377,7 @@ router.get('/getuserbookings' , authTokenHandler , async (req , res , next) => {
         // })
 
         for(let i = 0 ; i < user.bookings.length ; i++){
-            let bookingobj = await Booking.findById(user.bookings[i]._id);
+            let bookingobj = await Booking.findById(user.bookings[i]._id).populate('movieId screenId');
             bookings.push(bookingobj);
         }
 

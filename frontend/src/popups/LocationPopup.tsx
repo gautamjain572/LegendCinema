@@ -10,27 +10,9 @@ const LocationPopup = ({ setShowLocationPopup }: { setShowLocationPopup: React.D
 
   const getcities = async () => {
     const indianCities = [
-      "Jabalpur",
-      "Mumbai",
-      "Delhi",
-      "Bangalore",
-      "Hyderabad",
-      "Chennai",
-      "Kolkata",
-      "Pune",
-      "Ahmedabad",
-      "Jaipur",
-      "Surat",
-      "Lucknow",
-      "Kanpur",
-      "Nagpur",
-      "Indore",
-      "Thane",
-      "Bhopal",
-      "Visakhapatnam",
-      "Pimpri-Chinchwad",
-      "Patna",
-      "Vadodara"
+      "gurgaon",
+      "bhiwadi",
+      "faridabad",
     ];
     const cities = indianCities.map((city) => {
       return {
@@ -46,22 +28,26 @@ const LocationPopup = ({ setShowLocationPopup }: { setShowLocationPopup: React.D
   }, [])
 
   const handleSave = () => {
-    // setShowLocationPopup(false)
-    fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/changeCity`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify({ city: selectedCity })
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.ok) {
-          toast(data.message, { type: 'success' })
-          setShowLocationPopup(false)
-          window.location.reload()
-        }
+    if (selectedCity) {
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/auth/changeCity`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ city: selectedCity })
       })
-      .catch((err) => { toast(err.message, { type: 'error' }) })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.ok) {
+            toast(data.message, { type: 'success' })
+            setShowLocationPopup(false)
+            window.location.reload()
+          }
+        })
+        .catch((err) => { toast(err.message, { type: 'error' }) })
+    }
+    else{
+      setShowLocationPopup(false)
+    }
   }
 
   return (

@@ -149,7 +149,9 @@ const SelectSeatPage = () => {
                 if (response.ok) {
                     toast.success('Booking Successful')
                     //console.log(response)
-                    window.location.href = "/profile"
+                    setInterval(() => {
+                         window.location.href = "/profile"
+                    }, 2000);
                 }
                 else {
                     console.log(response)

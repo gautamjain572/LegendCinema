@@ -139,44 +139,44 @@ const ProfilePage = () => {
                     {bookings && 
                         bookings?.map((booking: any) => {
                             return (
-                                <div className='booking' key={booking._id}>
+                                <div className='booking' key={booking?._id}>
                                     <div className='detail'>
                                         <h3>Movie</h3>
-                                        <p>{booking.movieId.title}</p>
+                                        <p>{booking?.movieId.title}</p>
                                     </div>
                                     <div className='detail'>
                                         <h3>Screen</h3>
-                                        <p>{booking.screenId.name}</p>
+                                        <p>{booking?.screenId.name}</p>
                                     </div>
                                     <div className='detail'>
                                         <h3>Seats</h3>
                                         <p>
                                             {
-                                                booking.seats.map((seat: any, index: any) => {
-                                                    return <span key={index}>{seat.seat_id},</span>
+                                                booking?.seats.map((seat: any, index: any) => {
+                                                    return <span key={index}>{seat?.seat_id},</span>
                                                 })
                                             }
                                         </p>
                                     </div>
                                     <div className='detail'>
                                         <h3>Price</h3>
-                                        <p>{booking.totalPrice}</p>
+                                        <p>{booking?.totalPrice}</p>
                                     </div>
                                     <div className='detail'>
                                         <h3>Payment Type</h3>
-                                        <p>{booking.paymentType}</p>
+                                        <p>{booking?.paymentType}</p>
                                     </div>
                                     <div className='detail'>
                                         <h3>Payment Id</h3>
-                                        <p>{booking.paymentId}</p>
+                                        <p>{booking?.paymentId}</p>
                                     </div>
                                     <div className='detail'>
                                         <h3>Show Date</h3>
-                                        <p>{booking.showDate}</p>
+                                        <p>{booking?.showDate}</p>
                                     </div>
                                     <div className='detail'>
                                         <h3>Show Time</h3>
-                                        <p>{booking.showTime}</p>
+                                        <p>{booking?.showTime}</p>
                                     </div>
                                 </div>
                             )
