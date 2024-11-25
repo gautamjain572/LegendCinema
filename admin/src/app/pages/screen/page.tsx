@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 interface Screen {
@@ -952,11 +952,11 @@ const CreateScreenPage: React.FC = () => {
   ]
 
   const [screen, setScreen] = useState<Screen>({
-    name: '',
-    location: '',
+    name: "",
+    location: "",
     seats: tempseatlayout,
-    city: '',
-    screenType: '',
+    city: "",
+    screenType: "",
   });
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

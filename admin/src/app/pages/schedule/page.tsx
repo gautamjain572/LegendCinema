@@ -68,17 +68,12 @@ const page = () => {
       toast.error("Please fill all the fields");
       return
     }
-
     const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/movie/addmoviescheduletoscreen`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: {'Content-Type': 'application/json'},
       credentials: 'include',
       body: JSON.stringify(schedule)
     })
-
-
     const data = await res.json()
     console.log(data)
     if (data.ok) {
@@ -86,8 +81,8 @@ const page = () => {
     } else {
       toast.error("Schedule creation failed");
     }
-
   }
+  
   return (
     <div className="formpage">
       <div className='citysearch'>

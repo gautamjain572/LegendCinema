@@ -13,11 +13,8 @@ const Navbar = () => {
         try {
             const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_API+'/admin/checklogin', {
                 method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: {'Content-Type': 'application/json'},
                 credentials: 'include'
-
             });
             if (response.ok) {
                 // Admin is authenticated
@@ -25,13 +22,11 @@ const Navbar = () => {
             } else {
                 // Admin is not authenticated
                 setIsAdminAuthenticated(false);
-               
             }
         }
         catch (error) {
             console.error('An error occurred during admin authentication check', error);
             setIsAdminAuthenticated(false);
-
         }
     }
 
@@ -41,8 +36,7 @@ const Navbar = () => {
 
   return (
     <div className='navbar'>
-         <Image src={logo} alt="Logo" width={100} className='logo' />
-
+         <Link href='/'><Image src={logo} alt="Logo" width={100} className='logo' /></Link>
          <div className='adminlinks'>
                 {isAdminAuthenticated ? (
                     <>

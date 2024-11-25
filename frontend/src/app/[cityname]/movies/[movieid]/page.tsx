@@ -90,7 +90,7 @@ const MoviePage = () => {
                             <div className='circlecardslider'>
                                 <div className='line'></div>
                                 <h1>Cast</h1>
-                                <div className="mySwiper w-48">
+                                <div className="mySwiper flex">
                                     {
                                         movie.cast.map((cast: any, index: any) => {
                                             return (

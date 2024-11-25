@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 interface Movie {
   title: string;
@@ -207,9 +207,7 @@ const CreateMoviePage  = () => {
         </label>
       ))}
     </div>
-
     <br />
-
     <label>Duration</label>
     <input
       type="number"
@@ -219,9 +217,7 @@ const CreateMoviePage  = () => {
       onChange={handleInputChange}
     />
     <br />
-
     <button onClick={handleCreateMovie}>Create Movie</button>
-
   </div>
   )
 }
