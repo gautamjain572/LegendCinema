@@ -1,31 +1,25 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import { Navigation, Autoplay } from 'swiper/modules';
+import { assets } from '@/assets/assets.js'
 import Image from 'next/image';
-import { assets } from '@/assets/assets';
 
-const HomeSlider = () => {
-
-    const banners = [assets.poster3 ,assets.poster ,assets.poster2]
+const Slider = () => {
 
     return (
-        <Swiper
-            navigation={true}
-            autoplay={{ delay: 1000, disableOnInteraction: true, }}
-            modules={[Navigation, Autoplay]}
-            className="mySwiper" loop={true}>
-            {
-                banners.map((item, index) => (
-                    <SwiperSlide key={index} >
-                        <Image className='w-full object-cover' src={item} alt='image' width={100} height={50} />
-                    </SwiperSlide>
-                ))
-            }
-        </Swiper>
-    )
+        <>
+            <Swiper navigation={true}
+                autoplay={{ delay: 5000, disableOnInteraction: true, }}
+                modules={[Navigation, Autoplay]}
+                className="mySwiper" loop={true}>
+                <SwiperSlide><Image className='w-full bg-cover' src={assets.poster} alt="" /></SwiperSlide>
+                <SwiperSlide><Image className='w-full bg-cover' src={assets.poster2} alt="" /></SwiperSlide>
+                <SwiperSlide><Image className='w-full bg-cover' src={assets.poster3} alt="" /></SwiperSlide>
+            </Swiper>
+        </>
+    );
 }
 
-export default HomeSlider
+export default Slider
