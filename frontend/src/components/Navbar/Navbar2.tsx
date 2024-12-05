@@ -82,7 +82,6 @@ const Navbar2 = () => {
           <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' href='/contact'>Contact</NavLink>
         </div>
       </div>
-
       {showPop && <LoactionPop onClose={() => setShowPop(false)} />}
     </nav>
   )
