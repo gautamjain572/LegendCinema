@@ -26,19 +26,19 @@ const Navbar2 = () => {
       <Link href='/' ><Image src={assets.logo} className='w-24 mt-1' alt='logo' /></Link>
 
       <ul className='hidden sm:flex gap-2 text-sm'>
-        <NavLink href='/' className='flex items-center gap-1 py-1 px-3 rounded-3xl hover:bg-gray-200'>
+        <NavLink href='/' className='flex items-center gap-1 py-1 px-3 rounded-3xl hover:bg-gray-200 bg-black'>
           <IoMdHome />
           <p>Home</p>
         </NavLink>
-        <NavLink href='/showtimigs' className='flex items-center gap-1 py-1 px-3 rounded-3xl hover:bg-gray-200'>
+        <NavLink href='/showtimigs' className='flex items-center gap-1 py-1 px-3 rounded-3xl hover:bg-gray-200 bg-black'>
           <BiCameraMovie />
           <p>Showtimings</p>
         </NavLink>
-        <NavLink href='/cinemas' className='flex items-center gap-1 py-1 px-3 rounded-3xl hover:bg-gray-200'>
+        <NavLink href='/cinemas' className='flex items-center gap-1 py-1 px-3 rounded-3xl hover:bg-gray-200 bg-black'>
           <MdMovie />
           <p>Movies</p>
         </NavLink>
-        <NavLink href='/contact' className='flex items-center gap-1 py-1 px-3 rounded-3xl hover:bg-gray-200'>
+        <NavLink href='/contact' className='flex items-center gap-1 py-1 px-3 rounded-3xl hover:bg-gray-200 bg-black'>
           <MdOutlineContactless />
           <p>Contact</p>
         </NavLink>

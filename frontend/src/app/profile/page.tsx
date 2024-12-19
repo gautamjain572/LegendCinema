@@ -1,10 +1,21 @@
 "use client"
 import React from 'react'
 import './ProfilePage.css'
+import MovieTicket from "@/components/ticket/MovieTicket";
 
 const ProfilePage = () => {
     const [bookings, setBookings] = React.useState<any>(null)
     const [user, setUser] = React.useState<any>(null)
+
+    const movieDetails = {
+        movieName: "Avatar: The Way of Water",
+        theaterName: "Cineplex Max",
+        showDate: "2024-12-20",
+        showTime: "7:30 PM",
+        seatNumber: "B12",
+        ticketNumber: "987654",
+        price: "450",
+      };
 
     const getBookings = async () => {
         fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/movie/getuserbookings`, {
@@ -183,6 +194,7 @@ const ProfilePage = () => {
                         })
                     }
                 </div>
+                <MovieTicket movieDetails={movieDetails} />
             </div>
         </div>
     )

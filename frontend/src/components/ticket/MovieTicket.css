@@ -1,0 +1,65 @@
+.movie-ticket {
+    width: 350px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ticket-header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  .ticket-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  .ticket-header p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+  }
+  
+  .ticket-body {
+    padding: 15px;
+  }
+  
+  .movie-info {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .movie-info h3 {
+    margin: 0 0 5px;
+    font-size: 1.3em;
+    color: #333;
+  }
+  
+  .movie-info p {
+    margin: 5px 0;
+    font-size: 0.95em;
+    color: #555;
+  }
+  
+  .ticket-details p {
+    margin: 5px 0;
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .ticket-footer {
+    text-align: center;
+    background-color: #eee;
+    padding: 10px 0;
+    font-size: 0.9em;
+    color: #555;
+  }
+  
