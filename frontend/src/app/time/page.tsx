@@ -2,11 +2,13 @@
 import React from 'react'
 import { FaRegHeart } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
-import DatePicker from "react-horizontal-datepicker";
+import HorizontalDatePicker from "@/components/Datepicker/HorizontalDatePicker"
 
 const ShowTimeings = () => {
 
-    const [selectedDate, setSelectedDate] = React.useState<any>(new Date())
+    const handleDateSelect = (date:any) => {
+        console.log("Selected Date:", date);
+      };
 
     return (
         <div className='mx-20 h-[100vh] bg-gray-50'>
@@ -21,12 +23,10 @@ const ShowTimeings = () => {
             </div>
             <hr />
             <div className='mt-2 mb-4'>
-                <DatePicker
-                    getSelectedDay={(date: any) => { setSelectedDate(date) }}
-                    endDate={60}
-                    selectDate={selectedDate}
-                    labelFormat={"MMMM"}
-                    color={"rgb(248, 68, 100)"}
+                <HorizontalDatePicker
+                    startDate={new Date()}
+                    numberOfDays={15}
+                    onDateSelect={handleDateSelect}
                 />
             </div>
             <hr />
