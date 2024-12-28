@@ -19,8 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <Navbar2 />
-        <Navbar />
+        <Navbar2 />
         {children}
         <ToastContainer />
         <Footer />

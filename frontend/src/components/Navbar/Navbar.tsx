@@ -86,7 +86,6 @@ const Navbar = () => {
           <BiSearch className='searchbtn' />
           <input type="text" placeholder="Search For a Movie" />
         </div>
-        <Link href='/time'><p className='ml-3'>Time</p></Link>
       </div>
       <div className='right'>
         <p className='dropdown' onClick={() => setShowLocationPopup(true)}>

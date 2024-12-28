@@ -14,7 +14,6 @@
   --errorcol: rgb(255, 0, 0);
 }
 
-
 .theme_btn1 {
   background-color: var(--col1);
   color: white;
@@ -25,19 +24,8 @@
   margin-right: 10px;
 }
 
-
 .linkstylenone {
   text-decoration: none;
   color: white;
   margin-right: 20px;
 }
-
-/* a.active {
-  background-color: #ea7700;
-  color: white;
-
-  &:hover {
-    background-color: #ea7700;
-    color: white;
-  }
-} */
