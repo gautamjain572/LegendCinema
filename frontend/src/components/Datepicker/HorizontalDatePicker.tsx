@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./HorizontalDatePicker.css";
 
-const HorizontalDatePicker = ({ startDate, numberOfDays, onDateSelect }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
+const HorizontalDatePicker = ({ startDate, numberOfDays, onDateSelect }:any) => {
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-  const getDates = (start, days) => {
+  const getDates = (start:any, days:any) => {
     const dates = [];
     for (let i = 0; i < days; i++) {
       const date = new Date(start);
@@ -16,7 +16,7 @@ const HorizontalDatePicker = ({ startDate, numberOfDays, onDateSelect }) => {
 
   const dates = getDates(startDate || new Date(), numberOfDays || 30);
 
-  const handleDateClick = (date) => {
+  const handleDateClick = (date:any) => {
     setSelectedDate(date);
     if (onDateSelect) {
       onDateSelect(date);

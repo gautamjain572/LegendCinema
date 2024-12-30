@@ -1,9 +1,10 @@
 "use client"
 import React from 'react'
-import DatePicker from "react-horizontal-datepicker";
+//import DatePicker from "react-horizontal-datepicker";
 import './BuyTicketsPage.css'
 import Link from 'next/link';
 import { usePathname, useParams } from 'next/navigation'
+import HorizontalDatePicker from '@/components/Datepicker/HorizontalDatePicker';
 
 const BuyTicketsPage = () => {
 
@@ -91,13 +92,18 @@ const BuyTicketsPage = () => {
                             <h1>{movie.title} - {movie.language}</h1>
                             <h3>{movie.genre.join(",")}</h3>
                         </div>
-                        <DatePicker
+                        {/* <DatePicker
                             getSelectedDay={(date: any) => { setSelectedDate(date) }}
                             endDate={100}
                             selectDate={selectedDate}
                             labelFormat={"MMMM"}
                             color={"rgb(248, 68, 100)"}
-                        />
+                        /> */}
+                        <HorizontalDatePicker
+                    startDate={new Date()}
+                    numberOfDays={15}
+                    onDateSelect={(date: any) => { setSelectedDate(date) }}
+                />
                     </div>
                     {
                         theatres && theatres.length > 0 &&

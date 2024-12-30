@@ -7,7 +7,7 @@ const LoactionPop = ({onClose}:any) => {
     const [selected, setselected] = useState('')
     //const [save, setSave] = useState('')
 
-    const popRef = useRef<HTMLInputElement>();
+    const popRef = useRef<HTMLInputElement>(null);
     const closeModel = (e:any) => {
         if (popRef.current === e.target) {
             onClose();

@@ -1,7 +1,7 @@
 import React from "react";
 import "./MovieTicket.css";
 
-const MovieTicket = ({ movieDetails }) => {
+const MovieTicket = ({ movieDetails }:any) => {
   const {
     movieName,
     theaterName,
