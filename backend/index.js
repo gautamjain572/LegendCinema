@@ -9,14 +9,13 @@ const imageuploadRoutes = require('./Routes/imageUploadRoutes');
 const cors = require('cors');
 const PORT = 8000;
 const passport = require('passport');
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
 require('dotenv').config();
 require('./db')
 require('./config/google-staregy.js');
 
-
 app.use(bodyParser.json());
 
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
 app.use(
     cors({
         origin: function (origin, callback) {
